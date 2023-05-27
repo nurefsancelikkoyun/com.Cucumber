@@ -6,75 +6,70 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+        plugin={"html:target/cucumber-reports.html"},
         features = "src/test/resources/features",
         glue = "stepdefinitions",
-        tags = "@regression or @smoke",
+        tags = "@smoke",
 
         dryRun = false
-
-
 )
 
-
 public class Runner {
-
     /*
-    Cucumber'da Runner Class'i istediğimiz testleri çalıştırmak
-    ve her calıştırılan test için rapor hazırlamak amacıyla kullanılır
+        Cucumber'da Runner Class'i istedigimiz testleri calistirmak
+        ve her calistirilan test icin rapor hazirlamak amaciyla kullanilir
 
-    Runner Class'i boş bir class'dir
+        Runner Class'i bos bir Class'dir
 
-    Belirtilen bu işleri
-    class içersindeki kodlar değil
-    class deklarasyonunda kullanacağımız Notasyonlar halleder
+        Belirtilen bu isleri
+        class icerisindeki kodlar degil
+        class deklarasyonunda kullanacagimiz Notasyonlar halleder
 
-    @RunWith notasyonu framework'umuze JUnit yüklelememizin sebebidir
-             ve Runner Class'inin Cucumber ile calışmasını sağlar
+        @RunWith notasyonu framework'umuze JUnit yuklememizin sebebidir
+                 ve Runner Class'inin cucumber ile calismasini saglar
 
-     @CucumberOptions ise framework'umuzde gerekli ayarlari yapar
+        @CucumberOptions ise framework'umuzde gerekli ayarlari yapar
 
-     features : feature dosyalarımızın bulunduğu konumu gösterir
-                dikkat edilirse tek tek feature dosyalarını  içeren klasorun yolunu yazıyoruz
+        features : feature dosyalarimizin bulundugu konumu gosterir
+                   dikkat edilirse tek tek feature dosyalarini degil
+                   tum feature dosyalarini iceren klasorun yolunu yaziyoruz
+        glue : feature dosyalari ile bagli olan
+               Java method'larinin yerini gosterir
+               Burada da tek tek class'lari degil,
+               tum class'lari iceren package'in adresini yazariz
+               boylece ilgili step hangi class altinda olursa olsun
+               cucumber bulup calistirir
+        tags : calistirilacak Feature veya Scenerio(lari) isaretlemek icin kullanilir
+               Cucumber Runner class'i calistirildiginda
+               tum feature dosyalarini gozden gecirir ve
+               Runner class'inda belirtilen tag'a sahip
+               TUM Fature ve Scenario(lari) calistirir
 
-      glue: feature dosyaları ile bağlı olan
-      Java methodlarının yerini gösterir
-      Burada da tek tek classları değil
-      tum classları içeren package'in adresini yazarız
-      bçyleceilgili step hangi class altında olursa olsun
-      cucumber bulup calıştırır
+               Eger birden fazla tag'i kontrol ederek calistirmasini istersek
+               "@regression or @smoke" veya "@regression and @smoke" gibi yazabiliriz
 
+       dryRun : Bir feature dosyasini ilk defa yazdigimizda
+                step'lerden bazilari daha once var oldugundan BEYAZ
+                bazilari ise ilk defa kullanacagimiz icin SARI olur
 
-      tags: calıştırılacak feaature veya sceneriolari işaretlemek için kullanılır
-      Cucumber Runner Class'i calıştırıldığında
-      tum feature dosylarını gözden geçirir ve runner classinda belirtilen taga
-      sahip tüm feature ve scenriolari calıştırır
+                Bu Feature dosyasini direk calistirmak istersek
+                Bastan baslayarak beyaz olan adimlari calistirir
+                Ilk sari adima geldiginde, exception firlatip
+                calistirmayi denedigi ilk sari satir
+                ve geriye kalan sari satirlarin
+                eksik steplerini bize yazdirir
 
-      Eğer birden fazla tagi kontrol ederek calıştırmasını istersek
-      "@regression or @smoke" veya "@regression and @smoke" gibi yazabiliriz
+                Amacimiz Feature dosyasini calistirmak degil,
+                sadece eksik step'lere ait kodlari olusturmak ise
+                Runner class'inda dryRun = true yapip
+                Runner class'ini calistiririz
 
-      dryRun : Bir feature dosyaisini ilk defa yazdığımızda
-               steplerden bazıları daha önce var olduğundan BEYAZ
-               bazıları ise ilk defa kullanacağımız için SARİ olur
+                dryRun= true dedigimizde
+                Cucumber testleri calistirmaz, sadece eksik adim var mi diye kontrol eder
+                eksik adim yoksa Test PASSED yazar
 
-               Bu feature dosyasını direk cakıştırmek istersek
-               bastan başlayarak beyaz olan adımları calıştırır
-               ilk sari adıma geldiğinde exeption fırlatip
-               calıştırmayı denediği ilk sarı satır
-               ve geriye kalan sarı satırların
-               eksik steplerini bize yazdırır
-
-               Amacımız feature dosyasını calıştırmak değil
-               sadece eksik steplere ait kodları oluşturmak ise
-               Runner classinda dryRun = true yapip
-               Runner Classini calıştırabiliriz
-
-               dryRun =true dediğimizde
-               Cucumber testleri calıştırmaz sadece eksik adım var mı diye kontol eder
-               eksik adım yoksa test PASSED yazar
-
+                dryRun = false default degerdir
+                ve Testleri normal olarak calistirmamizi saglar
 
      */
-
-
-
 }
